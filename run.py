@@ -4,6 +4,14 @@ from hangedman import lives_left
 import string
 
 
+class colors:
+    blue = '\033[38;5;159m'
+    green = '\033[92m'
+    red = '\033[91m'
+    white = '\033[0m'
+    bold = '\033[1m'
+
+
 def get_word(words):
     """
     Choose random word from 'words.py' file
@@ -18,23 +26,26 @@ def get_word(words):
 
 
 def hangman_game():
+    hangman_logo()
     word = get_word(words)
     lett_needed = set(word)  # letters in the word
     alphabet = set(string.ascii_uppercase)
     lett_guessed = set()  # letters user guesses
 
-    lives = 10
+    lives = 1
 
     # get user input
     while len(lett_needed) > 0 and lives > 0:
-        print('Lives left:', lives, )
-        print("You've used these letters: ", ' '.join(lett_guessed))
+        print("\nYou've used these letters: ", ' '.join(lett_guessed))
+        print('\nLives left:', lives, )
 
         word_guess = [lett if lett in lett_guessed else '_' for lett in word]
-        print(lives_left[lives])
+        print(colors.red + lives_left[lives] + colors.white)
         print('Current word: ', ' '.join(word_guess))
+        print('\n----------------------------------------')
 
-        user_guess = input('Please guess a letter: ').upper()
+        user_guess = input('\nPlease guess a letter: ').upper()
+        
         if user_guess in alphabet - lett_guessed:
             lett_guessed.add(user_guess)
             if user_guess in lett_needed:
@@ -53,15 +64,23 @@ def hangman_game():
 
     # player is hanged
     if lives == 0:
-        print(lives_left[lives])
-        print("You've been hanged! The word was", word)
+        print(colors.red + lives_left[lives] + colors.white)
+        print(colors.red + "You've been hanged! The word was", word)
+        print()
     else:
         print("Congrats! You're right, the word was", word, '!')
 
+def hangman_logo():
+    print(colors.green +
+        """
+         _   _                                           _                                         
+        | | | | __ _ _ __   __ _ _ __ ___   __ _ _ __   | |
+        | |_| |/ _` | '_ \\ / _` | '_ ` _ \\ / _` | '_ \\  | |
+        |  _  | (_| | | | | (_| | | | | | | (_| | | | | |_| 
+        |_| |_|\\__,_|_| |_|\\__, |_| |_| |_|\\__,_|_| |_| (_)
+                            |___/                       
+        """
+    + colors.white)
 
-user_input = input('Please type a letter: ')
-
-
-print(user_input)
 
 hangman_game()
