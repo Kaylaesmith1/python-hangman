@@ -4,8 +4,10 @@ from hangedman import lives_left
 import string
 
 
-class colors:
-    blue = '\033[38;5;159m'
+class colors:  # source: https://www.delftstack.com/howto/python/python-bold-text/#:~:text=text%20in%20Python.-,Print%20Bold%20Text%20in%20Python%20Using%20the%20ANSI%20Escape%20Sequence,%3A%20'%5C033%5B1m'%20.
+    purple = '\033[95m'
+    cyan = '\033[96m'
+    darkcyan = '\033[36m'
     green = '\033[92m'
     red = '\033[91m'
     white = '\033[0m'
@@ -65,13 +67,13 @@ def hangman_game():
     # player is hanged
     if lives == 0:
         print(colors.red + lives_left[lives] + colors.white)
-        print(colors.red + "You've been hanged! The word was", word)
+        print(colors.bold + "You've been hanged! The word was" + colors.green , word)
         print()
     else:
         print("Congrats! You're right, the word was", word, '!')
 
 def hangman_logo():
-    print(colors.green +
+    print(colors.cyan +
         """
          _   _                                           _                                         
         | | | | __ _ _ __   __ _ _ __ ___   __ _ _ __   | |
