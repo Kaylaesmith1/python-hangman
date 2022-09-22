@@ -37,13 +37,13 @@ def hangman_game():
         user_guess = input('Please guess a letter: ').upper()
         if user_guess in alphabet - lett_guessed:
             lett_guessed.add(user_guess)
-            if user_guess in word - lett_needed:
+            if user_guess in lett_needed:
                 lett_needed.remove(user_guess)
                 print('')
 
             else:
                 lives = lives - 1  # takes away a life if wrong
-                print('\nSorry,', lett_guessed, 'is not in the word.')
+                print('\nSorry,', user_guess, 'is not in the word.')
 
         elif user_guess in lett_guessed:
             print("\nYou've guessed this letter already. Please try again.")
@@ -63,3 +63,5 @@ user_input = input('Please type a letter: ')
 
 
 print(user_input)
+
+hangman_game()
