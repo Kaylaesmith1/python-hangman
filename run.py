@@ -38,7 +38,7 @@ def hangman_game():
     alphabet = set(string.ascii_uppercase)
     lett_guessed = set()  # letters user guesses
 
-    lives = 1
+    lives = 10
 
     # get user input
     while len(lett_needed) > 0 and lives > 0:
@@ -111,6 +111,25 @@ def choose_level():
     print("you'll get" + colors.orange, "7 lives. \n" + colors.white)
     print('Choose' + colors.red, 'H' + colors.white, 'for hard and \n')
     print("you'll get" + colors.red, "5 lives. \n" + colors.white)
+
+    difficulty = True
+    while difficulty:
+        options = input("\n ").upper()
+        if options == "E":
+            difficulty = False
+            lives = 10
+            return lives
+        elif options == "M":
+            difficulty = False
+            lives = 7
+            return lives
+        elif options == "H":
+            difficulty = False
+            lives = 5
+            return lives
+        else:
+            print(colors.red + "\n Please write E, M or H" + colors.white,)
+            print(" to choose your level of difficulty.")
 
 
 
