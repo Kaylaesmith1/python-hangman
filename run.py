@@ -105,9 +105,12 @@ def choose_level():
     Click 1, 2 or 3 to choose a level:
     easy (10 lives), medium (7 lives), hard (5 lives).
     """
-    print('Choose' + colors.green, 'E' + colors.white, 'for' + colors.green, '10 lives. \n' + colors.white)
-    print('Choose' + colors.orange, 'M' + colors.white, 'for' +colors.orange, '7 lives. \n' + colors.white)
-    print('Choose' + colors.red, 'H' + colors.white, 'for' + colors.red, '5 lives. \n' + colors.white)
+    print('Choose' + colors.green, 'E' + colors.white, 'for easy and \n')
+    print("you'll get" + colors.green, "10 lives. \n" + colors.white)
+    print('Choose' + colors.orange, 'M' + colors.white, 'for medium and \n')
+    print("you'll get" + colors.orange, "7 lives. \n" + colors.white)
+    print('Choose' + colors.red, 'H' + colors.white, 'for hard and \n')
+    print("you'll get" + colors.red, "5 lives. \n" + colors.white)
 
 
 
