@@ -10,6 +10,8 @@ class colors:  # source: https://www.delftstack.com/howto/python/python-bold-tex
     darkcyan = '\033[36m'
     green = '\033[92m'
     red = '\033[91m'
+    yellow = '\033[93m'
+    orange = '\033[33m'
     white = '\033[0m'
     bold = '\033[1m'
 
@@ -29,6 +31,8 @@ def get_word(words):
 
 def hangman_game():
     hangman_logo()
+    welcome_rules()
+    choose_level()
     word = get_word(words)
     lett_needed = set(word)  # letters in the word
     alphabet = set(string.ascii_uppercase)
@@ -47,7 +51,7 @@ def hangman_game():
         print('\n----------------------------------------')
 
         user_guess = input('\nPlease guess a letter: ').upper()
-        
+
         if user_guess in alphabet - lett_guessed:
             lett_guessed.add(user_guess)
             if user_guess in lett_needed:
@@ -67,13 +71,13 @@ def hangman_game():
     # player is hanged
     if lives == 0:
         print(colors.red + lives_left[lives] + colors.white)
-        print(colors.bold + "You've been hanged! The word was" + colors.green , word)
+        print(colors.bold + "You've been hanged! The word was" + colors.cyan , word)
         print()
     else:
         print("Congrats! You're right, the word was", word, '!')
 
 def hangman_logo():
-    print(colors.cyan +
+    print(colors.purple +
         """
          _   _                                           _                                         
         | | | | __ _ _ __   __ _ _ __ ___   __ _ _ __   | |
@@ -83,6 +87,28 @@ def hangman_logo():
                             |___/                       
         """
     + colors.white)
+
+def welcome_rules():
+    """
+    Welcome user to the game
+    Give rules of the game
+    Choose a level (easy, medium, hard)
+    """
+    print('Welcome to Hangman! \n')
+    print('Try to guess the random word before you get hung. \n')
+    print('Follow the instructions to choose a level: easy, medium or hard.\n')
+    print('If you want to play again, click XX. Good luck! \n')
+    print('\n----------------------------------------')
+
+def choose_level():
+    """
+    Click 1, 2 or 3 to choose a level:
+    easy (10 lives), medium (7 lives), hard (5 lives).
+    """
+    print('Choose' + colors.green, 'E' + colors.white, 'for' + colors.green, '10 lives. \n' + colors.white)
+    print('Choose' + colors.orange, 'M' + colors.white, 'for' +colors.orange, '7 lives. \n' + colors.white)
+    print('Choose' + colors.red, 'H' + colors.white, 'for' + colors.red, '5 lives. \n' + colors.white)
+
 
 
 hangman_game()
