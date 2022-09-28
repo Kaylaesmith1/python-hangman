@@ -74,7 +74,7 @@ def hangman_game():
         print(colors.bold + "You've been hanged! The word was" + colors.cyan , word)
         print()
     else:
-        print("Congrats! You're right, the word was", word, '!')
+        print(colors.bold + "Congrats! You're right, the word was" + colors.cyan , word)
 
 def hangman_logo():
     print(colors.purple +
