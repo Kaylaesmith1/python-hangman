@@ -2,6 +2,7 @@ import random
 from words import words
 from hangedman import lives_left
 import string
+from time import sleep
 
 
 class colors:  # source: https://www.delftstack.com/howto/python/python-bold-text/#:~:text=text%20in%20Python.-,Print%20Bold%20Text%20in%20Python%20Using%20the%20ANSI%20Escape%20Sequence,%3A%20'%5C033%5B1m'%20.
@@ -37,8 +38,9 @@ def hangman_game():
     lett_needed = set(word)  # letters in the word
     alphabet = set(string.ascii_uppercase)
     lett_guessed = set()  # letters user guesses
+    
 
-    lives = 10
+    lives = 2
 
     # get user input
     while len(lett_needed) > 0 and lives > 0:
@@ -76,6 +78,7 @@ def hangman_game():
     else:
         print(colors.bold + "Congrats! You're right, the word was" + colors.cyan , word)
 
+
 def hangman_logo():
     print(colors.purple +
         """
@@ -95,14 +98,18 @@ def welcome_rules():
     Choose a level (easy, medium, hard)
     """
     print('Welcome to Hangman! \n')
+    sleep(1)
     print('Try to guess the random word before you get hung. \n')
+    sleep(1)
     print('Follow the instructions to choose a level: easy, medium or hard.\n')
-    print('If you want to play again, click XX. Good luck! \n')
+    sleep(1.5)
+    # print('If you want to play again, click "Run Program" button at the top. Good luck! \n')
     print('\n----------------------------------------')
+    sleep(1.5)
 
 def choose_level():
     """
-    Click 1, 2 or 3 to choose a level:
+    Type 'e', 'm', or 'h' to choose a level:
     easy (10 lives), medium (7 lives), hard (5 lives).
     """
     print('Choose' + colors.green, 'E' + colors.white, 'for easy and \n')
@@ -130,7 +137,6 @@ def choose_level():
         else:
             print(colors.red + "\n Please write E, M or H" + colors.white,)
             print(" to choose your level of difficulty.")
-
 
 
 hangman_game()
