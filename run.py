@@ -5,13 +5,11 @@ import string
 from time import sleep
 
 
-class colors:  # source: https://www.delftstack.com/howto/python/python-bold-text/#:~:text=text%20in%20Python.-,Print%20Bold%20Text%20in%20Python%20Using%20the%20ANSI%20Escape%20Sequence,%3A%20'%5C033%5B1m'%20.
+class colors:
     purple = '\033[95m'
     cyan = '\033[96m'
-    darkcyan = '\033[36m'
     green = '\033[92m'
     red = '\033[91m'
-    yellow = '\033[93m'
     orange = '\033[33m'
     white = '\033[0m'
     bold = '\033[1m'
@@ -34,7 +32,7 @@ def get_word(words):
     """
     word = random.choice(words)
 
-    while ' ' in word or '-' in word:  # still look if word has hyphen / space
+    while ' ' in word or '-' in word:
         word = random.choice(words)
 
     return word.upper()
@@ -52,7 +50,6 @@ def hangman_game():
 
     lives = 10
 
-    # get user input
     while len(lett_needed) > 0 and lives > 0:
         print("\nYou've used these letters: ", ' '.join(lett_guessed))
         print('\nLives left:', lives, )
@@ -71,7 +68,7 @@ def hangman_game():
                 print('')
 
             else:
-                lives = lives - 1  # takes away a life if wrong
+                lives = lives - 1
                 print('\nSorry,', user_guess, 'is not in the word.')
 
         elif user_guess in lett_guessed:
@@ -113,7 +110,6 @@ def welcome_rules():
     sleep(1.5)
     print('Follow the instructions to choose a level: easy, medium or hard.\n')
     sleep(1.5)
-    # print('If you want to play again, click "Run Program" button at the top. Good luck! \n')
     print('----------------------------------------')
     sleep(1.5)
 
