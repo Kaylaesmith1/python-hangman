@@ -139,7 +139,9 @@ def choose_level():
 
 
 hangman_game()
-if input("Would you like to play again? (Y/N) ").upper() == "Y":
+while input(colors.white + "Would you like to play again? (Y/N)").upper() == "Y":
     hangman_game()
-else:
-    hangman_logo()
+    break
+print(colors.bold + colors.purple + "Thanks for playing... \n")
+sleep(1)
+hangman_logo()
