@@ -37,7 +37,7 @@ def hangman_game():
     word = get_word(words)
     lett_needed = set(word)  # letters in the word
     alphabet = set(string.ascii_uppercase)
-    lett_guessed = set()  # letters user guesses    
+    lett_guessed = set()  # letters user guesses
 
     lives = 2
 
@@ -138,10 +138,12 @@ def choose_level():
             print(" to choose your level of difficulty.")
 
 
+
 hangman_game()
+
 while input(colors.white + "Would you like to play again? (Y/N)").upper() == "Y":
     hangman_game()
     break
 print(colors.bold + colors.purple + "Thanks for playing... \n")
 sleep(1)
-hangman_logo()
+hangman_logo()    
