@@ -16,6 +16,16 @@ class colors:  # source: https://www.delftstack.com/howto/python/python-bold-tex
     white = '\033[0m'
     bold = '\033[1m'
 
+def player_name():
+    global name
+    while True:
+        name = input("\nWho's playing today? ")
+        if name.isalpha():
+            break
+        print(colors.red + "Please only enter valid letters.\n" + colors.white)
+    sleep(1)
+    print("\nGood luck, " + colors.cyan + f"{name.capitalize()}" + colors.white + "! To start, please...\n")
+    return name
 
 def get_word(words):
     """
@@ -33,13 +43,14 @@ def get_word(words):
 def hangman_game():
     hangman_logo()
     welcome_rules()
+    player_name()
     choose_level()
     word = get_word(words)
     lett_needed = set(word)  # letters in the word
     alphabet = set(string.ascii_uppercase)
     lett_guessed = set()  # letters user guesses
 
-    lives = 2
+    lives = 10
 
     # get user input
     while len(lett_needed) > 0 and lives > 0:
@@ -72,10 +83,10 @@ def hangman_game():
     # player is hanged
     if lives == 0:
         print(colors.red + lives_left[lives] + colors.white)
-        print(colors.bold + "You've been hanged! The word was" + colors.cyan , word)
+        print(colors.bold + f"Sorry, {name.capitalize()}, you've been hanged! The word was" + colors.red , word)
         print()
     else:
-        print(colors.bold + "Congrats! You're right, the word was" + colors.cyan , word)
+        print(colors.bold + f"Congrats {name.capitalize()}! You're right, the word was" + colors.cyan , word)
 
 
 def hangman_logo():
@@ -86,7 +97,7 @@ def hangman_logo():
         | |_| |/ _` | '_ \\ / _` | '_ ` _ \\ / _` | '_ \\  | |
         |  _  | (_| | | | | (_| | | | | | | (_| | | | | |_| 
         |_| |_|\\__,_|_| |_|\\__, |_| |_| |_|\\__,_|_| |_| (_)
-                            |___/                       
+                            |___/                      
         """
     + colors.white)
 
@@ -97,13 +108,13 @@ def welcome_rules():
     Choose a level (easy, medium, hard)
     """
     print('Welcome to Hangman! \n')
-    sleep(1)
+    sleep(1.5)
     print('Try to guess the random word before you get hung. \n')
-    sleep(1)
+    sleep(1.5)
     print('Follow the instructions to choose a level: easy, medium or hard.\n')
     sleep(1.5)
     # print('If you want to play again, click "Run Program" button at the top. Good luck! \n')
-    print('\n----------------------------------------')
+    print('----------------------------------------')
     sleep(1.5)
 
 def choose_level():
@@ -111,10 +122,12 @@ def choose_level():
     Type 'e', 'm', or 'h' to choose a level:
     easy (10 lives), medium (7 lives), hard (5 lives).
     """
-    print('Choose' + colors.green, 'E' + colors.white, 'for easy and \n')
+    print('choose' + colors.green, 'E' + colors.white, 'for easy and \n')
     print("you'll get" + colors.green, "10 lives. \n" + colors.white)
+    sleep(1)
     print('Choose' + colors.orange, 'M' + colors.white, 'for medium and \n')
     print("you'll get" + colors.orange, "7 lives. \n" + colors.white)
+    sleep(1)
     print('Choose' + colors.red, 'H' + colors.white, 'for hard and \n')
     print("you'll get" + colors.red, "5 lives. \n" + colors.white)
 
@@ -146,14 +159,8 @@ while True:
     if input(colors.white + "Would you like to play again? (Y/N)").upper() == "Y":
         hangman_game()
     else:
-        print(colors.bold + colors.purple + "Thanks for playing... \n")
+        print(colors.purple + "Thanks for playing... \n")
         break
-
-
-# while input(colors.white + "Would you like to play again? (Y/N)").upper() == "Y":
-#     hangman_game()
-#     break
-# print(colors.bold + colors.purple + "Thanks for playing... \n")
 
 sleep(1)
 hangman_logo()    
