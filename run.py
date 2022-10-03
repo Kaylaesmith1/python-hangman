@@ -1,3 +1,4 @@
+# All code or resources used in this project are credited in the README file.
 import random
 from words import words
 from hangedman import lives_left
@@ -15,6 +16,10 @@ class colors:
     bold = '\033[1m'
 
 def player_name():
+    """
+    Asks player to enter their name. This will be used to wish them luck and
+    either congratulate them or give condolences at game end.
+    """
     global name
     while True:
         name = input("\nWho's playing today? ")
@@ -22,7 +27,8 @@ def player_name():
             break
         print(colors.red + "Please only enter valid letters.\n" + colors.white)
     sleep(1)
-    print("\nGood luck, " + colors.cyan + f"{name.capitalize()}" + colors.white + "! To start, please...\n")
+    print(
+        "\nGood luck, " + colors.cyan + f"{name.capitalize()}" + colors.white + "! To start, please...\n")
     return name
 
 def get_word(words):
@@ -39,6 +45,10 @@ def get_word(words):
 
 
 def hangman_game():
+    """
+    Interactive game to guess a random word using single letters
+    in a specific number of 'lives'.
+    """
     hangman_logo()
     welcome_rules()
     player_name()
@@ -48,7 +58,7 @@ def hangman_game():
     alphabet = set(string.ascii_uppercase)
     lett_guessed = set()  # letters user guesses
 
-    lives = 10
+    lives = 2
 
     while len(lett_needed) > 0 and lives > 0:
         print("\nYou've used these letters: ", ' '.join(lett_guessed))
@@ -80,21 +90,27 @@ def hangman_game():
     # player is hanged
     if lives == 0:
         print(colors.red + lives_left[lives] + colors.white)
-        print(colors.bold + f"Sorry, {name.capitalize()}, you've been hanged! The word was" + colors.red , word)
+        print(colors.bold + f"Sorry, {name.capitalize()}, you've been hanged! The word was" 
+        + colors.red , word)
         print()
     else:
-        print(colors.bold + f"Congrats {name.capitalize()}! You're right, the word was" + colors.cyan , word)
+        print(colors.bold + f"Congrats {name.capitalize()}! You're right, the word was" 
+        + colors.cyan , word)
 
 
 def hangman_logo():
+    """
+    The word 'Hangman' is spelled out 
+    in purple letters at the beginning of the game.
+    """
     print(colors.purple +
-        """
-         _   _                                           _
-        | | | | __ _ _ __   __ _ _ __ ___   __ _ _ __   | |
-        | |_| |/ _` | '_ \\ / _` | '_ ` _ \\ / _` | '_ \\  | |
-        |  _  | (_| | | | | (_| | | | | | | (_| | | | | |_| 
-        |_| |_|\\__,_|_| |_|\\__, |_| |_| |_|\\__,_|_| |_| (_)
-                            |___/                      
+        """    
+     _   _                                         _ 
+    | | | | __ _ _ __   __ _ _ __ ___   __ _ _ __ | |
+    | |_| |/ _` | '_ \ / _` | '_ ` _ \ / _` | '_ \| |
+    |  _  | (_| | | | | (_| | | | | | | (_| | | | |_|
+    |_| |_|\__,_|_| |_|\__, |_| |_| |_|\__,_|_| |_(_)
+                        |___/                         
         """
     + colors.white)
 
@@ -152,11 +168,14 @@ hangman_game()
 
 
 while True:
-    if input(colors.white + "Would you like to play again? (Y/N)").upper() == "Y":
+    if input(
+        colors.white + "Want a rematch? (Y to restart, other to quit)").upper() == "Y":
         hangman_game()
     else:
         print(colors.purple + "Thanks for playing... \n")
         break
 
 sleep(1)
-hangman_logo()    
+hangman_logo()
+
+

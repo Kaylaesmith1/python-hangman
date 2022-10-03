@@ -1,6 +1,8 @@
 # INTERACTIVE HANGMAN GAME
 
-Hangman is a Python terminal game, deployed on Heroku. The user can play the game at three different levels of difficulty (based on lenghth of word). The player wins the game if they guess the word correctly in the allotted number of guesses. They lose if they fail to guess the correct word in the number of guesses given based on the level of difficulty they chose: 5 lives for EASY, 7 for MEDIUM and 10 for HARD.
+This hangman game is a Python terminal game, deployed on Heroku. The overall aim of this game is for the player to have fun trying to guess a random word of a varying length, based on the difficulty level chosen by the player. Secondarily, this game could be used, both with native English speakers and English learners as a way to broaden their vocabulary. Finally, the game can help keep the mind sharp. By guessing letters and critically thinking of [letter patterns and common letters](https://en.wikipedia.org/wiki/Hangman_(game)) in the English language, the player can use skill to win the game.
+
+The user can play the game at three different levels of difficulty (based on lenghth of word). The player wins the game if they guess the word correctly in the allotted number of guesses. They lose if they fail to guess the correct word in the number of guesses given based on the level of difficulty they chose: 5 lives for EASY, 7 for MEDIUM and 10 for HARD.
 
 After each incorrect guess, a life is lost and the contruction of the gallows and the hanging figure increases.
 
@@ -37,36 +39,28 @@ The player continues guessing until they complete the word correctly, winning th
 
 ## Bugs
 
-    1. At the end of the game, the player is asked if they want to play again. The player had to enter 'N' twice before the 'Thanks for playing' and hangman logo appeared. The while loop was breaking in the wrong place; this is now fixed.
+1. At the end of the game, the player is asked if they want to play again. The player had to enter 'N' twice before the 'Thanks for playing' and hangman logo appeared. The while loop was breaking in the wrong place; this is now fixed.
 
-    2. The aforementioned while loop was also causing an error in asking the player if they wanted to play again. At the end of game one, the player was asked if they wanted to play again. If they chose to, the game ran again but at the end did NOT ask if they wanted to play a third time. This is solved now in correcting the syntax of the while loop. It now works properly if the player chooses to play again or to quit. 
+2. The aforementioned while loop was also causing an error in asking the player if they wanted to play again. At the end of game one, the player was asked if they wanted to play again. If they chose to, the game ran again but at the end did NOT ask if they wanted to play a third time. This is solved now in correcting the syntax of the while loop. It now works properly if the player chooses to play again or to quit. 
+3. The number of lives ISN'T WORKING PROPERLY. FIX THIS BUG. GIVES WHATEVER THE DEFAULT IS SET TO. NEED TO WRITE FUNCTION.
 
-    3. The number of lives ISN'T WORKING PROPERLY. FIX THIS BUG. GIVES WHATEVER THE DEFAULT IS SET TO. NEED TO WRITE FUNCTION.
 
-## No known unsolved bugs
+## Deployment to Heroku
 
-# Deployment
-    This project is deployed on Heroku.
+This project is deployed on Heroku in the following manner. UPDATE THIS.
 
-## Steps
-    - View a few YouTube videos for background on ways to approach creating a Hangman game in Python.
-    - Create a Hangman game that incorporates user data, interactivity, difficulty levels, play again feature and colored text.
-    - Deploy game to Heroku
-    - Link the GitHub repository to the Heroku app (with Node JS)
-    - Deploy
+## Credits
 
-# Credits
+- I used the [Code Institute Python template](https://github.com/Code-Institute-Org/python-essentials-template) for this project.
 
-    - I used a YouTube tutorial by Kylie Ying for general background knowledge and, specifically, to edit out spaces and '-' characters in the list of words used for the game.
-    
-    Resource: https://www.youtube.com/watch?v=cJJTnI22IF8&t=2s&ab_channel=KylieYing
+- I used a [YouTube tutorial](https://www.youtube.com/watch?v=cJJTnI22IF8&t=2s&ab_channel=KylieYing) by Kylie Ying for general background knowledge and used her list of words in the words.py file. I also used her logic in this video to edit out spaces and '-' characters in the list of words used for the game.
 
-    - For timed space betweeen printed statements I imported sleep() from time, which I found through a Google search.
-    
-    Resource: https://www.freecodecamp.org/news/the-python-sleep-function-how-to-make-python-wait-a-few-seconds-before-continuing-with-example-commands/#:~:text=Make%20your%20time%20delay%20specific,after%20a%20slight%20delay.%22
+- The Hangman graphic was designed using [this software](https://patorjk.com/software/taag/#p=display&f=Standard&t=Hangman!).
 
-    - To incorporate colors and font weights, I used the 'class' method found through a Google search and labeled and called the colors and bold type accordingly.
-    
-    Resource: https://www.delftstack.com/howto/python/python-bold-text/#:~:text=text%20in%20Python.-,Print%20Bold%20Text%20in%20Python%20Using%20the%20ANSI%20Escape%20Sequence,%3A%20'%5C033%5B1m'%20
+- For timed space betweeen printed statements I imported sleep() from time, which I found through a [Google search](https://www.freecodecamp.org/news/the-python-sleep-function-how-to-make-python-wait-a-few-seconds-before-continuing-with-example-commands/#:~:text=Make%20your%20time%20delay%20specific,after%20a%20slight%20delay.%22).
 
-    - I had some issues with my while loop in calling the game function again should the player want to play again. I credit Ed B_Alum on Slack for helping, as well as Sean in a tutoring session. Both of their input and ultimately Sean's redefining of my while loop solved the bug and made my code cleaner. 
+- To incorporate colors and font weights, I used the 'class' method found through a [Google search](https://www.delftstack.com/howto/python/python-bold-text/#:~:text=text%20in%20Python.-,Print%20Bold%20Text%20in%20Python%20Using%20the%20ANSI%20Escape%20Sequence,%3A%20'%5C033%5B1m'%20) and labeled and called the colors and bold type accordingly.
+
+- I had some issues with my while loop in calling the game function again should the player want to play again. I credit Ed B_Alum on Slack for helping, as well as Sean in a tutoring session. Both of their input and ultimately Sean's redefining of my while loop solved the bug and made my code cleaner. 
+
+- Though it was unnecessary to import outside libraries for this project, I did import a couple of libraries that were already part of the Python program: random, string and sleep, which were used to randomize words, link letters of the alphabet, and delay printed messages, respectively. I also created two files: words.py and hangedman.py. The former is a [list of words](https://raw.githubusercontent.com/kying18/hangman/master/words.py) (taken from the Kylie Ying tutorial mentioned above) and the second is graphic based on the number of lives left.
