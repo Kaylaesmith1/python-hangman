@@ -10,7 +10,7 @@ At the beginning of the game, the player is asked to give their name, which is t
 
 Once the game is finished, the player is asked if they'd like to play again. Entering 'Y' will restart the game with a new random word and the difficulty level chosen by the player. Entering in anything other than 'Y' ('N' or another character) will conclude the game with a 'Thanks for playing...' message.
 
-![CHANGE THIS](./assets/readme/amiresponsive.png)
+![CHANGE THIS](./assets/README-changethis.png)
 
 ## How to play
 
