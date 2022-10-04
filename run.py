@@ -52,13 +52,12 @@ def hangman_game():
     hangman_logo()
     welcome_rules()
     player_name()
-    choose_level()
     word = get_word(words)
     lett_needed = set(word)  # letters in the word
     alphabet = set(string.ascii_uppercase)
     lett_guessed = set()  # letters user guesses
 
-    lives = 2
+    lives = choose_level()
 
     while len(lett_needed) > 0 and lives > 0:
         print("\nYou've used these letters: ", ' '.join(lett_guessed))
@@ -147,15 +146,12 @@ def choose_level():
     while difficulty:
         options = input("\n ").upper()
         if options == "E":
-            difficulty = False
             lives = 10
             return lives
         elif options == "M":
-            difficulty = False
             lives = 7
             return lives
         elif options == "H":
-            difficulty = False
             lives = 5
             return lives
         else:
@@ -177,5 +173,3 @@ while True:
 
 sleep(1)
 hangman_logo()
-
-
