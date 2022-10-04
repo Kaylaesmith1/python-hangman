@@ -26,10 +26,9 @@ def player_name():
         name = input("\nWho's playing today? ")
         if name.isalpha():
             break
-        print(colors.red + "Please only enter valid letters.\n" + colors.white)
+        print(colors.red + "Valid letters (A-Z) only please.\n" + colors.white)
     sleep(1)
-    print("\nGood luck, " + colors.cyan + f"{name.capitalize()}")
-    print(colors.white + "! To start, please...\n")
+    print("\nGood luck, " + colors.cyan + f"{name.capitalize()}!")
     return name
 
 
@@ -62,7 +61,7 @@ def hangman_game():
     lives = choose_level()
 
     while len(lett_needed) > 0 and lives > 0:
-        print("\nYou've used these letters: ", ' '.join(lett_guessed))
+        print("\nYou've used these letters: ", ' '.join(sorted(lett_guessed)))
         print('\nLives left:', lives, )
 
         word_guess = [lett if lett in lett_guessed else '_' for lett in word]
@@ -86,12 +85,12 @@ def hangman_game():
             print("\nYou've guessed this letter already. Please try again.")
 
         else:
-            print('Error. Please type in a valid letter.')
+            print("That doesn't work, please type in a valid letter, A-Z.")
 
     # player is hanged
     if lives == 0:
         print(colors.red + lives_left[lives] + colors.white)
-        print(colors.bold + f"Sorry, {name.capitalize()}, you've been hanged!")
+        print(colors.bold + f"Oh no, {name.capitalize()}, you've been hanged!")
         print("The word was" + colors.red, word)
     else:
         print(colors.bold + f"Congrats {name.capitalize()}!")
@@ -122,13 +121,13 @@ def welcome_rules():
     Choose a level (easy, medium, hard)
     """
     print('Welcome to Hangman! \n')
-    sleep(1.5)
+    sleep(1)
     print('Try to guess the random word before you get hung. \n')
-    sleep(1.5)
+    sleep(1)
     print('Follow the instructions to choose a level: easy, medium or hard.\n')
-    sleep(1.5)
+    sleep(1)
     print('----------------------------------------')
-    sleep(1.5)
+    sleep(1)
 
 
 def choose_level():
@@ -136,13 +135,14 @@ def choose_level():
     Type 'e', 'm', or 'h' to choose a level:
     easy (10 lives), medium (7 lives), hard (5 lives).
     """
-    print('choose' + colors.green, 'E' + colors.white, 'for easy and \n')
+    print(colors.white + "\nTo start, please choose...\n")
+    print(colors.green, 'E' + colors.white, 'for easy and \n')
     print("you'll get" + colors.green, "10 lives. \n" + colors.white)
     sleep(1)
-    print('Choose' + colors.orange, 'M' + colors.white, 'for medium and \n')
+    print(colors.orange, 'M' + colors.white, 'for medium and \n')
     print("you'll get" + colors.orange, "7 lives. \n" + colors.white)
     sleep(1)
-    print('Choose' + colors.red, 'H' + colors.white, 'for hard and \n')
+    print(colors.red, 'H' + colors.white, 'for hard and \n')
     print("you'll get" + colors.red, "5 lives. \n" + colors.white)
 
     difficulty = True
@@ -163,6 +163,8 @@ def choose_level():
 
 
 hangman_game()
+
+
 while True:
     if input(colors.white + "Want a rematch? (Y/other > quit)").upper() == "Y":
         hangman_game()
