@@ -15,6 +15,7 @@ class colors:
     white = '\033[0m'
     bold = '\033[1m'
 
+
 def player_name():
     """
     Asks player to enter their name. This will be used to wish them luck and
@@ -27,9 +28,10 @@ def player_name():
             break
         print(colors.red + "Please only enter valid letters.\n" + colors.white)
     sleep(1)
-    print(
-        "\nGood luck, " + colors.cyan + f"{name.capitalize()}" + colors.white + "! To start, please...\n")
+    print("\nGood luck, " + colors.cyan + f"{name.capitalize()}")
+    print(colors.white + "! To start, please...\n")
     return name
+
 
 def get_word(words):
     """
@@ -89,29 +91,29 @@ def hangman_game():
     # player is hanged
     if lives == 0:
         print(colors.red + lives_left[lives] + colors.white)
-        print(colors.bold + f"Sorry, {name.capitalize()}, you've been hanged! The word was" 
-        + colors.red , word)
-        print()
+        print(colors.bold + f"Sorry, {name.capitalize()}, you've been hanged!")
+        print("The word was" + colors.red, word)
     else:
-        print(colors.bold + f"Congrats {name.capitalize()}! You're right, the word was" 
-        + colors.cyan , word)
+        print(colors.bold + f"Congrats {name.capitalize()}!")
+        print("You're right, the word was" + colors.cyan, word)
 
 
 def hangman_logo():
     """
-    The word 'Hangman' is spelled out 
+    The word 'Hangman' is spelled out
     in purple letters at the beginning of the game.
     """
     print(colors.purple +
-        """    
-     _   _                                         _ 
-    | | | | __ _ _ __   __ _ _ __ ___   __ _ _ __ | |
-    | |_| |/ _` | '_ \ / _` | '_ ` _ \ / _` | '_ \| |
-    |  _  | (_| | | | | (_| | | | | | | (_| | | | |_|
-    |_| |_|\__,_|_| |_|\__, |_| |_| |_|\__,_|_| |_(_)
-                        |___/                         
-        """
-    + colors.white)
+            """
+             _   _                                         _
+            | | | | __ _ _ __   __ _ _ __ ___   __ _ _ __ | |
+            | |_| |/ _` | '_ \ / _` | '_ ` _ \ / _` | '_ \| |
+            |  _  | (_| | | | | (_| | | | | | | (_| | | | |_|
+            |_| |_|\__,_|_| |_|\__, |_| |_| |_|\__,_|_| |_(_)
+                                |___/
+            """
+            + colors.white)
+
 
 def welcome_rules():
     """
@@ -127,6 +129,7 @@ def welcome_rules():
     sleep(1.5)
     print('----------------------------------------')
     sleep(1.5)
+
 
 def choose_level():
     """
@@ -159,13 +162,9 @@ def choose_level():
             print(" to choose your level of difficulty.")
 
 
-
 hangman_game()
-
-
 while True:
-    if input(
-        colors.white + "Want a rematch? (Y to restart, other to quit)").upper() == "Y":
+    if input(colors.white + "Want a rematch? (Y/other > quit)").upper() == "Y":
         hangman_game()
     else:
         print(colors.purple + "Thanks for playing... \n")
