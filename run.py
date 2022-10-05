@@ -102,16 +102,14 @@ def hangman_logo():
     The word 'Hangman' is spelled out
     in purple letters at the beginning of the game.
     """
-    print(colors.purple +
-            """
-             _   _                                         _
-            | | | | __ _ _ __   __ _ _ __ ___   __ _ _ __ | |
-            | |_| |/ _` | '_ \ / _` | '_ ` _ \ / _` | '_ \| |
-            |  _  | (_| | | | | (_| | | | | | | (_| | | | |_|
-            |_| |_|\__,_|_| |_|\__, |_| |_| |_|\__,_|_| |_(_)
-                                |___/
-            """
-            + colors.white)
+    print(colors.purple + """
+         _   _                                         _
+        | | | | __ _ _ __   __ _ _ __ ___   __ _ _ __ | |
+        | |_| |/ _` | '_ \ / _` | '_ ` _ \ / _` | '_ \| |
+        |  _  | (_| | | | | (_| | | | | | | (_| | | | |_|
+        |_| |_|\__,_|_| |_|\__, |_| |_| |_|\__,_|_| |_(_)
+                            |___/
+        """ + colors.white)
 
 
 def welcome_rules():

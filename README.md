@@ -12,6 +12,11 @@ Once the game is finished, the player is asked if they'd like to play again. Ent
 
 ![CHANGE THIS](./assets/README-changethis.png)
 
+ ## Game FlowChart
+ When planning the game, I thought about what commands and what user input would be needed for the game to work. Do aid in development, I created this flowchart using [Lucid](https://lucid.app/documents#/dashboard) to help visualize the final game flow.
+
+![FlowChart](./assets/flowchart.png)
+
 ## How to play
 
 First the player chooses a level of difficulty and a random word will be shown using ( _ ) markers for the letters. The player will then guess one letter at a time. If the letter is part of the word, it will appear in lieu of one of the blank spaces ( _ ). If the letter is not in the word, a life will be lost and a part of the gallows or a body part of the figure will appear. 
@@ -20,30 +25,63 @@ The player continues guessing until they complete the word correctly, winning th
 
 ## Features
 
-* Player name is recorded and used to greet them and at the end of the game, both in the congratulatory and condolence messages.
-* A function generates a random word for the player to guess. The word is shown as a set of underscores symbolizing each letter. The underscore characters are shown as letters when the player guesses a correct letter. 
+* Player is greeted with a welcome message, the instructions of the game and asked for their name.
+![Welcome Message](./assets/welcome.png)
+
 * The player chooses a level of difficulty (easy, medium, hard) and the number of lives is reflected (10, 7, 5, respectively).
-* If the player makes an incorrect guess, a life is lost and the gallows and hanging figure are built piece by piece (letter by letter). The number of lives remains unchanged if the player guesses a correct letter.
-* Error message shown for: duplicate guesses, numbers or special characters.
-* Various colors included for aesthetic purposes and as a way to guide the player: E for easy level is in green, for example, yellow for medium and red for hard when the player chooses a level at the outset. Color also used for the player's name at the beginning.
+![User name input and levels](./assets/levels.png)
+
+* A function generates a random word for the player to guess. The word is shown as a set of underscores symbolizing each letter. The underscore characters are shown as letters when the player guesses a correct letter. 
+![Random Word](./assets/random_word.png)
+
+* If the player makes an incorrect guess they are told, a life is lost and the gallows and hanging figure are built piece by piece (letter by letter). The number of lives remains unchanged if the player guesses a correct letter.
+![Incorrect guess](./assets/incorrect_guess.png)
+
+* Error message shown for: duplicate guesses, numbers or special characters (invalid letters) or two letters / characters at a time.
+![Invalid guess](./assets/invalid_guess.png)
+
+* When the game is over, the player is either congratulated or given condolences by name.
+![Congrats](./assets/congrats.png)
+![Condolences](./assets/condolences.png)
+
+* The player is then asked if they'd like to play again. If so, the game restarts from the beginning with a new random word, the number of lives reset and the gallows deconstructed. 
+![Restart game](./assets/restart_game.png)
+
+* If the player chooses not to play again, the game ends and they're sent off with a 'Thanks for playing' message and they exit the game.
+![Thanks for playing](./assets/thanks_playing.png)
+
+
+* Various colors were included for aesthetic purposes and as a way to guide the player: E for easy level is in green, for example, yellow for medium and red for hard when the player chooses a level at the outset. Color also used for the player's name at the beginning, congratulatory and condolence messages at the end of the game.
 
 ## Testing
 
-* Self-tested for various bugs and functionality.
-* Self-tested for all scenarios with invalid guesses (numbers, special characters).
-* Tested for all scenarios with successful guesses (letters only).
+* Tested for various bugs and functionality.
+* Tested for all scenarios with invalid guesses (numbers, special characters).
+* Tested for all scenarios with successful guesses (valid letters only).
 * Friends and colleagues did the same once the first round of testing was completed by the creator (me).
 
-### PEP8 valitated with no errors
-* CHECK THIS!!! - New pep8 page?
+## PEP8 valitated (in Gitpod workspace)
+* Since the Pep8 website is having some issues, I added the Pep8 validator into my Gitpod workspace directly, following the Code Institue instructions. 
+* All errors and warnings were fixed, barring a few warnings for 'invalid escape sequence'. These do not affect the functionality of the game and I chose to leave them as they are a vital part of the aesthetic of the 'Hangman' logo. 
+
+![Invalid seq image](./assets/invalid_seq_image.png)
+
+![Invalid escape seq error](./assets/invalid_escape_sequence.png)
 
 ## Bugs
 
 1. At the end of the game, the player is asked if they want to play again. The player had to enter 'N' twice before the 'Thanks for playing' and hangman logo appeared. The while loop was breaking in the wrong place; this is now fixed.
 
 2. The aforementioned while loop was also causing an error in asking the player if they wanted to play again. At the end of game one, the player was asked if they wanted to play again. If they chose to, the game ran again but at the end did NOT ask if they wanted to play a third time. This is solved now in correcting the syntax of the while loop. It now works properly if the player chooses to play again or to quit. 
-3. The number of lives ISN'T WORKING PROPERLY. FIX THIS BUG. GIVES WHATEVER THE DEFAULT IS SET TO. NEED TO WRITE FUNCTION.
 
+3. Choosing the number of lives wasn't working properly at the outset but I wasn't calling the function properly. Changing lives = 10 (player will always have 10 lives, regardless of difficulty chosen) to lives = choose_level() fixed the problem. Now the player will get 10, 7 or 5 lives depending on level of difficulty chosen.
+
+## Points of improvement
+
+1. The final letter of the game is not currently shown in the 'Current word:', rather it's highlighted as part of the congratulatory message just under the player's final (correct) guess. Aesthetically, it would be best to have both the word completely written out in the game board and written as congratulations below.
+![Missing Letter](./assets/missing_letter.png)
+
+2. The levels could be different. It might be better to have the level of difficulty based on the number of letters in the word rather than the number of lives.
 
 ## Deployment to Heroku
 
@@ -63,4 +101,4 @@ This project is deployed on Heroku in the following manner. UPDATE THIS.
 
 - I had some issues with my while loop in calling the game function again should the player want to play again. I credit Ed B_Alum on Slack for helping, as well as Sean in a tutoring session. Both of their input and ultimately Sean's redefining of my while loop solved the bug and made my code cleaner. 
 
-- Though it was unnecessary to import outside libraries for this project, I did import a couple of libraries that were already part of the Python program: random, string and sleep, which were used to randomize words, link letters of the alphabet, and delay printed messages, respectively. I also created two files: words.py and hangedman.py. The former is a [list of words](https://raw.githubusercontent.com/kying18/hangman/master/words.py) (taken from the Kylie Ying tutorial mentioned above) and the second is graphic based on the number of lives left.
+- Though it was unnecessary to import outside libraries for this project, I did import a couple of libraries that were already part of the Python program: random, string and sleep, which were used to randomize words, link letters of the alphabet, and delay printed messages, respectively. I also created two files: words.py and hangedman.py. The former is a [list of words](https://raw.githubusercontent.com/kying18/hangman/master/words.py) (taken from the Kylie Ying tutorial mentioned above) and the second is a graphic based on the number of lives left I used from [gibbo101's](https://github.com/gibbo101/hangman) hangman game.
