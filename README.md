@@ -10,7 +10,7 @@ At the beginning of the game, the player is asked to give their name, which is t
 
 Once the game is finished, the player is asked if they'd like to play again. Entering 'Y' will restart the game with a new random word and the difficulty level chosen by the player. Entering in anything other than 'Y' ('N' or another character) will conclude the game with a 'Thanks for playing...' message.
 
-![CHANGE THIS](./assets/README-changethis.png)
+![Responsive](./assets/responsive.png)
 
  ## Game FlowChart
  When planning the game, I thought about what commands and what user input would be needed for the game to work. Do aid in development, I created this flowchart using [Lucid](https://lucid.app/documents#/dashboard) to help visualize the final game flow.
@@ -59,6 +59,7 @@ The player continues guessing until they complete the word correctly, winning th
 * Tested for all scenarios with invalid guesses (numbers, special characters).
 * Tested for all scenarios with successful guesses (valid letters only).
 * Friends and colleagues did the same once the first round of testing was completed by the creator (me).
+* This game was only tested in Chrome, Safari and Firefox browswers on a Macbook Pro laptop device. The app worked well in all browsers.
 
 ## PEP8 valitated (in Gitpod workspace)
 * Since the Pep8 website is having some issues, I added the Pep8 validator into my Gitpod workspace directly, following the Code Institue instructions. 
@@ -67,6 +68,8 @@ The player continues guessing until they complete the word correctly, winning th
 ![Invalid seq image](./assets/invalid_seq_image.png)
 
 ![Invalid escape seq error](./assets/invalid_escape_sequence.png)
+
+* Other validation errors had to do with extra white space at the end of lines, indentation issues and lines over 79 characters long. All have been fixed.
 
 ## Bugs
 
@@ -83,9 +86,83 @@ The player continues guessing until they complete the word correctly, winning th
 
 2. The levels could be different. It might be better to have the level of difficulty based on the number of letters in the word rather than the number of lives.
 
+3. As I mentioned in the 'Testing' section, this application was only tested on laptop devices in various browsers. This was done deliberately. The app is not responsive nor functions on a mobile phone. Since this app is a backend application working through a terminal, I chose to focus on functionality in the terminal. This could however be a point of improvement in the future; it would be fun to be able to play the game on a mobile phone. 
+
 ## Deployment to Heroku
 
-This project is deployed on Heroku in the following manner. UPDATE THIS.
+This project was deployed on Heroku in the following manner:
+
+1. Log into the [Heroku website](https://www.heroku.com)
+
+2. Click 'New' and choose 'Create new app'. 
+
+3. Choose an app name (this does NOT have to be identical to GitHub) and a region.
+
+4. Click 'Create app'.
+![Create new app](./assets/create_app_heroku.png)
+
+5. You should be on the 'Deploy' tab (1).
+
+6. Choose connect to GitHub account (2).
+
+7. Search for the repository you want to deploy. The name needs to match exactly (3).
+
+8. Click 'Connect' (4).
+
+![Connect GitHub/Heroku](./assets/connect_repo_heroku.png)
+
+9. Select whether you want automatic deployment.
+
+10. Choose which branch you want to deploy. 
+
+11. Click 'Deploy branch'
+
+![Connect GitHub/Heroku](./assets/deploy_main_branch.png)
+
+12. When the deployment is complete, go to the 'Settings' page to configure vars and buildpacks. 
+
+13. Click 'Reveal Config Vars'. For this project, we needed PORT 8000 (as a var) and the Node.js and Python buildpacks.
+
+14. Click 'Add' to fill out PORT and 8000 in he KEY / VALUE pair. This has been done.
+
+15. Click 'Add buildpack' and select Node.js from the options.
+
+![Config Vars and Buildpacks](./assets/configVars_buildpacks.png)
+
+16. Scroll back to the top where you will see 'Open app'. BEFORE opening, you will need to redeploy as the first deployment happened before Node.js was installed as a buildpack. If you open now, there will be an error.
+
+![Open app](./assets/open_app.png)
+
+
+## Forking the repository on GitHub
+
+GitHub enables other developers (or whomever) to copy repositories so they can be viewed and changed by others without any edits affecting the original.
+
+To do this, the following steps are necessary:
+
+1. Log in to GitHub and locate the repository. 
+
+1. Click the 'Fork' button at the top right to copy.
+
+![Fork Repo](./assets/fork_repo.png)
+
+## Cloning the repository on GitHub
+
+You can also clone the repository on GitHub. 
+
+1. Click the green 'Code' button.
+
+2. Click on the two overlapping papers to copy the URL
+
+![Clone Repo](./assets/clone_repo.png)
+
+3. Open Git Bash in the browser.
+
+4. Change the working directory a directory you want your clone to be in.
+
+5. Type 'git clone' and paste the copied URL.
+
+6. Click 'enter' and the clone will be finished.
 
 ## Credits
 
