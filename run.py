@@ -91,10 +91,10 @@ def hangman_game():
     if lives == 0:
         print(colors.red + lives_left[lives] + colors.white)
         print(colors.bold + f"Oh no, {name.capitalize()}, you've been hanged!")
-        print("The word was" + colors.red, word)
+        print("The word was" + colors.red, word + colors.white)
     else:
         print(colors.bold + f"Congrats {name.capitalize()}!")
-        print("You're right, the word was" + colors.cyan, word)
+        print("You're right, the word was" + colors.cyan, word + colors.white)
 
 
 def hangman_logo():
@@ -164,7 +164,7 @@ hangman_game()
 
 
 while True:
-    if input(colors.white + "Want a rematch? (Y/other > quit)").upper() == "Y":
+    if input("Want a rematch? Any key = quit, Y = play again").upper() == "Y":
         hangman_game()
     else:
         print(colors.purple + "Thanks for playing... \n")

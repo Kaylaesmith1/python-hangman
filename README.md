@@ -1,43 +1,47 @@
 # INTERACTIVE HANGMAN GAME
 
-This hangman game is a Python terminal game, deployed on Heroku. The overall aim of this game is for the player to have fun trying to guess a random word of a varying length, based on the difficulty level chosen by the player. Secondarily, this game could be used, both with native English speakers and English learners as a way to broaden their vocabulary. Finally, the game can help keep the mind sharp. By guessing letters and critically thinking of [letter patterns and common letters](https://en.wikipedia.org/wiki/Hangman_(game)) in the English language, the player can use skill to win the game.
+This hangman game is a Python terminal game, deployed on Heroku. The overall aim of this game is for the player to have fun trying to guess a random word of a varying length, based on the difficulty level they choose. Secondarily, this game could be used, both with native English speakers and English learners as a way to broaden their vocabulary. Finally, the game can help keep the mind sharp. By guessing letters and critically thinking of [letter patterns and the most common letters](https://en.wikipedia.org/wiki/Hangman_(game)) in the English language, the player can use skill to help them win the game.
 
-The user can play the game at three different levels of difficulty (based on lenghth of word). The player wins the game if they guess the word correctly in the allotted number of guesses. They lose if they fail to guess the correct word in the number of guesses given based on the level of difficulty they chose: 5 lives for EASY, 7 for MEDIUM and 10 for HARD.
+The user can play the game at three different levels of difficulty, based on the number of lives the have: 5 lives for EASY, 7 for MEDIUM and 10 for HARD. The player wins the game if they guess the word correctly in the allotted number of guesses; they lose the game otherwise.
 
 After each incorrect guess, a life is lost and the contruction of the gallows and the hanging figure increases.
 
 At the beginning of the game, the player is asked to give their name, which is then used to wish them luck and, at the end of the game, congratulate them on winning or give condolences on their loss.
 
-Once the game is finished, the player is asked if they'd like to play again. Entering 'Y' will restart the game with a new random word and the difficulty level chosen by the player. Entering in anything other than 'Y' ('N' or another character) will conclude the game with a 'Thanks for playing...' message.
+Once the game is finished, the player is asked if they'd like to play again. Entering 'Y' will restart the game with a new random word and the difficulty level chosen by the player. Entering in anything other than 'Y' ('N' or another character) will conclude the game with a 'Thanks for playing...' message followed by the Hangman logo.
+
+You can play the game [here](https://python-hangman-kes.herokuapp.com/).
 
 ![Responsive](./assets/responsive.png)
 
  ## Game FlowChart
- When planning the game, I thought about what commands and what user input would be needed for the game to work. Do aid in development, I created this flowchart using [Lucid](https://lucid.app/documents#/dashboard) to help visualize the final game flow.
+ When planning the game, I thought about what commands and what user input would be needed for the game to work. To aid in development, I created this flowchart using [Lucid](https://lucid.app/documents#/dashboard) to help visualize the final game flow.
 
 ![FlowChart](./assets/flowchart.png)
 
 ## How to play
 
-First the player chooses a level of difficulty and a random word will be shown using ( _ ) markers for the letters. The player will then guess one letter at a time. If the letter is part of the word, it will appear in lieu of one of the blank spaces ( _ ). If the letter is not in the word, a life will be lost and a part of the gallows or a body part of the figure will appear. 
+First the player chooses a level of difficulty and a random word will be shown using ( _ ) markers in place of the letters. The player will then guess one letter at a time. If the letter is part of the word, it will appear in lieu of one of the blank spaces ( _ ). If the letter is not in the word, a life will be lost and a part of the gallows or a body part of the figure will appear. 
 
-The player continues guessing until they complete the word correctly, winning the game, or until all lives are lost and they are hung, signifying the game is over. For either outcome, an end of game message will appear incorporating the name the player entered at the beginning. The player will then have the opportunity to play again, with a different random word, should they choose. 
+The player continues guessing until they complete the word correctly, winning the game, or until all lives are lost and they are hung, signifying their loss. For either outcome, an end of game message will appear incorporating the name the player entered at the beginning. The player will then have the opportunity to play again if they choose, with a different random word. 
 
 ## Features
 
-* Player is greeted with a welcome message, the instructions of the game and asked for their name.
+* Various colors were included for aesthetic purposes and as a way to guide the player: E for easy level is in green, for example, yellow for medium and red for hard when the player chooses a level at the outset. Color also used for the player's name at the beginning, congratulatory and condolence messages at the end of the game.
+
+* To begin, the player is greeted with a welcome message, the instructions of the game and they're asked for their name.
 ![Welcome Message](./assets/welcome.png)
 
 * The player chooses a level of difficulty (easy, medium, hard) and the number of lives is reflected (10, 7, 5, respectively).
 ![User name input and levels](./assets/levels.png)
 
-* A function generates a random word for the player to guess. The word is shown as a set of underscores symbolizing each letter. The underscore characters are shown as letters when the player guesses a correct letter. 
+* A random word is generated for the player to guess. The word is shown as a set of underscores symbolizing each letter. The underscore characters are shown as letters when the player guesses a correct letter. 
 ![Random Word](./assets/random_word.png)
 
-* If the player makes an incorrect guess they are told, a life is lost and the gallows and hanging figure are built piece by piece (letter by letter). The number of lives remains unchanged if the player guesses a correct letter.
+* If the player makes an incorrect guess they are told the letter is not part of the word, a life is lost and the gallows and hanging figure are built piece by piece (letter by letter). The number of lives remains unchanged if the player guesses a correct letter.
 ![Incorrect guess](./assets/incorrect_guess.png)
 
-* Error message shown for: duplicate guesses, numbers or special characters (invalid letters) or two letters / characters at a time.
+* An error message shown for: duplicate guesses, numbers or special characters (invalid letters), or two letters / characters guessed at the same time.
 ![Invalid guess](./assets/invalid_guess.png)
 
 * When the game is over, the player is either congratulated or given condolences by name.
@@ -50,20 +54,17 @@ The player continues guessing until they complete the word correctly, winning th
 * If the player chooses not to play again, the game ends and they're sent off with a 'Thanks for playing' message and they exit the game.
 ![Thanks for playing](./assets/thanks_playing.png)
 
-
-* Various colors were included for aesthetic purposes and as a way to guide the player: E for easy level is in green, for example, yellow for medium and red for hard when the player chooses a level at the outset. Color also used for the player's name at the beginning, congratulatory and condolence messages at the end of the game.
-
 ## Testing
 
 * Tested for various bugs and functionality.
-* Tested for all scenarios with invalid guesses (numbers, special characters).
+* Tested for all scenarios with invalid guesses (numbers, special characters, double characters).
 * Tested for all scenarios with successful guesses (valid letters only).
 * Friends and colleagues did the same once the first round of testing was completed by the creator (me).
 * This game was only tested in Chrome, Safari and Firefox browswers on a Macbook Pro laptop device. The app worked well in all browsers.
 
 ## PEP8 valitated (in Gitpod workspace)
-* Since the Pep8 website is having some issues, I added the Pep8 validator into my Gitpod workspace directly, following the Code Institue instructions. 
-* All errors and warnings were fixed, barring a few warnings for 'invalid escape sequence'. These do not affect the functionality of the game and I chose to leave them as they are a vital part of the aesthetic of the 'Hangman' logo. 
+* Since the Pep8 website is not properly working at the moment, I added the Pep8 validator into my Gitpod workspace directly, following the Code Institue instructions for installation.
+* All errors and warnings were fixed, barring a few warnings for 'invalid escape sequence'. These do not affect the functionality of the game and I chose to leave them as they are a vital part of the aesthetic of the 'Hangman' logo. They are visible in gold in the 'Hangman' image below.
 
 ![Invalid seq image](./assets/invalid_seq_image.png)
 
@@ -73,11 +74,11 @@ The player continues guessing until they complete the word correctly, winning th
 
 ## Bugs
 
-1. At the end of the game, the player is asked if they want to play again. The player had to enter 'N' twice before the 'Thanks for playing' and hangman logo appeared. The while loop was breaking in the wrong place; this is now fixed.
+1. At the end of the game, the player is asked if they want to play again. The player had to enter 'N' twice before the 'Thanks for playing' and hangman logo appeared. The while loop was breaking in the wrong place. The 'break' was moved to the end of the print statement, which fixed the problem.
 
-2. The aforementioned while loop was also causing an error in asking the player if they wanted to play again. At the end of game one, the player was asked if they wanted to play again. If they chose to, the game ran again but at the end did NOT ask if they wanted to play a third time. This is solved now in correcting the syntax of the while loop. It now works properly if the player chooses to play again or to quit. 
+2. The aforementioned while loop was also causing an error in asking the player if they wanted to play again. At the end of game one, the player was asked if they wanted to play again. If they chose to do so, the game ran again but at the end of the second game did NOT ask if they wanted to play a third time. This is solved now in correcting the syntax of the while loop. It now works properly if the player chooses to play again or to quit. 
 
-3. Choosing the number of lives wasn't working properly at the outset but I wasn't calling the function properly. Changing lives = 10 (player will always have 10 lives, regardless of difficulty chosen) to lives = choose_level() fixed the problem. Now the player will get 10, 7 or 5 lives depending on level of difficulty chosen.
+3. Choosing the number of lives wasn't working properly at the outset but I wasn't calling the function. Changing lives = 10 (player will always have 10 lives, regardless of difficulty chosen) to lives = choose_level() fixed the problem. Now the player will get 10, 7 or 5 lives depending on level of difficulty chosen.
 
 ## Points of improvement
 
@@ -86,7 +87,7 @@ The player continues guessing until they complete the word correctly, winning th
 
 2. The levels could be different. It might be better to have the level of difficulty based on the number of letters in the word rather than the number of lives.
 
-3. As I mentioned in the 'Testing' section, this application was only tested on laptop devices in various browsers. This was done deliberately. The app is not responsive nor functions on a mobile phone. Since this app is a backend application working through a terminal, I chose to focus on functionality in the terminal. This could however be a point of improvement in the future; it would be fun to be able to play the game on a mobile phone. 
+3. As I mentioned in the 'Testing' section, this application was only tested on laptop devices in various browsers, which was done deliberately. The app is not responsive nor functions on a mobile phone. Since this app is a backend application working through a terminal, I chose to focus on functionality in the terminal. This could however be a point of improvement in the future as it would be fun to be able to play the game on a mobile phone. 
 
 ## Deployment to Heroku
 
@@ -136,7 +137,7 @@ This project was deployed on Heroku in the following manner:
 
 ## Forking the repository on GitHub
 
-GitHub enables other developers (or whomever) to copy repositories so they can be viewed and changed by others without any edits affecting the original.
+GitHub enables other developers (or whomever) to copy repositories so they can be viewed and changed without any edits affecting the original.
 
 To do this, the following steps are necessary:
 
